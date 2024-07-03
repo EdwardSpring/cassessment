@@ -10,10 +10,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    entrypoint:
-      - 'java'
-      - '-jar'
-      - 'build/libs/service.jar'
   mysql:
     image: mysql:latest
     environment:
