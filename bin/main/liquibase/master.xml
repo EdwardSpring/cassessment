@@ -1,0 +1,46 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!-- Initial data -->
+    <include file="liquibase/changelog/000000-initial-data.xml" relativeToChangelogFile="false" />
+
+    <!-- Customer table creation -->
+    <include file="liquibase/changelog/create_entity_customer.xml" relativeToChangelogFile="false" />
+
+    <!-- Pricing table creation -->
+    <include file="liquibase/changelog/create_entity_pricing.xml" relativeToChangelogFile="false" />
+
+    <!-- Film type table creation -->
+    <include file="liquibase/changelog/create_entity_film_type.xml" relativeToChangelogFile="false" />
+
+    <!-- Film table creation -->
+    <include file="liquibase/changelog/create_entity_film.xml" relativeToChangelogFile="false" />
+
+    <!-- Film rental table creation -->
+    <include file="liquibase/changelog/create_entity_film_rental.xml"
+        relativeToChangelogFile="false" />
+
+    <!-- Film rental item table creation -->
+    <include file="liquibase/changelog/create_entity_film_rental_item.xml"
+        relativeToChangelogFile="false" />
+
+    <!--
+    ******************************************************************************************** -->
+
+    <!-- Load customer table -->
+    <include file="liquibase/changelog/load_table_customer.xml" relativeToChangelogFile="false" />
+
+    <!-- Load pricing table -->
+    <include file="liquibase/changelog/load_table_pricing.xml" relativeToChangelogFile="false" />
+
+    <!-- Load film type table -->
+    <include file="liquibase/changelog/load_table_film_type.xml" relativeToChangelogFile="false" />
+
+    <!-- Load film table -->
+    <include file="liquibase/changelog/load_table_film.xml" relativeToChangelogFile="false" />
+
+</databaseChangeLog>

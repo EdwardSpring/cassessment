@@ -1,0 +1,24 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="table" value="customer" global="false" />
+
+    <changeSet id="load_fake_data_${table}" author="${author}">
+        <preConditions onFail="MARK_RAN" onFailMessage="Table '${table}' does not exist!">
+            <tableExists tableName="${table}" />
+        </preConditions>
+        <loadData file="liquibase/data/${table}.csv" separator="," tableName="${table}">
+            <column name="id" type="bigint" />
+            <column name="first_name" type="string" />
+            <column
+                name="last_name" type="string" />
+            <column name="name" type="string" />
+            <column
+                name="email" type="string" />
+            <column name="address" type="string" />
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

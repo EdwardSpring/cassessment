@@ -1,0 +1,30 @@
+services:
+  rentalservice:
+    build: .
+    ports:
+      - '2024:2024'
+    environment:
+      - 'DATASOURCE_URL=jdbc:mysql://rentalservice@mysql/rentalservice'
+      - 'DATASOURCE_USERNAME=rentalservice'
+      - 'DATASOURCE_PASSWORD=password'
+    depends_on:
+      mysql:
+        condition: service_healthy
+    entrypoint:
+      - 'java'
+      - '-jar'
+      - 'build/libs/service.jar'
+  mysql:
+    image: mysql:latest
+    environment:
+      - 'MYSQL_USER=rentalservice'
+      - 'MYSQL_PASSWORD=password'
+      - 'MYSQL_RANDOM_ROOT_PASSWORD=true'
+      - 'MYSQL_DATABASE=rentalservice'
+    ports:
+      - '33333:3306'
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      start_period: 3s
+      timeout: 2s
+      retries: 10

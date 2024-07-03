@@ -1,0 +1,40 @@
+server:
+  port: 2024
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /dev
+      prefix: stdout
+      buffered: false
+      suffix:
+      file-date-format:
+
+spring:
+  application.name: video-rental-store
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+  devtools:
+    restart:
+      exclude: logs/**
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
+    enabled: true
+
+logging.config: 'classpath:logback.xml'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, heapdump, threaddump, loggers
+      base-path: /

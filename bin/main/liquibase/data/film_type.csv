@@ -1,0 +1,4 @@
+"id","name","initial_pricing_id","surcharge_pricing_id","grace_period"
+"1","new release","1","1","1"
+"2","regular films","2","2","3"
+"3","old films","2","2","5"
